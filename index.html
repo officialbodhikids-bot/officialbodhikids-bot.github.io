@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor's Bookstore</title>
+    <style>
+        :root { --primary: #25D366; --dark: #128C7E; --bg: #f4f7f6; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: grid; grid-template-columns: 1fr 350px; gap: 20px; }
+        @media (max-width: 768px) { body { grid-template-columns: 1fr; } }
+        header { grid-column: 1 / -1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .book-card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+        .book-card h3 { margin: 10px 0 5px 0; font-size: 1.1rem; }
+        .price { font-weight: bold; color: #333; margin-bottom: 15px; }
+        button { background: var(--dark); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: background 0.2s; }
+        button:hover { background: #075E54; }
+        .cart-panel { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: fit-content; position: sticky; top: 20px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .cart-item button { width: auto; padding: 2px 8px; background: #ff4d4d; }
+        .cart-item button:hover { background: #cc0000; }
+        .total { font-size: 1.2rem; font-weight: bold; margin: 20px 0; display: flex; justify-content: space-between; }
+        .whatsapp-btn { background: var(--primary); color: #fff; text-align: center; text-decoration: none; display: block; padding: 12px; border-radius: 4px; font-weight: bold; font-size: 1rem; }
+        .whatsapp-btn:hover { background: #20ba5a; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📚 My Bookstore</h1>
+        <p>Select your books and checkout seamlessly via WhatsApp with no added fees.</p>
+    </header>
+
+    <!-- Books View Layer -->
+    <main class="books-grid" id="books-container"></main>
+
+    <!-- Cart State Layer -->
+    <aside class="cart-panel">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div class="total">
+            <span>Total:</span>
+            <span>$<span id="cart-total">0.00</span></span>
+        </div>
+        <a href="#" class="whatsapp-btn" onclick="checkoutViaWhatsApp(event)">🚀 Order via WhatsApp</a>
+    </aside>
+
+    <script>
+        // CONFIGURATION: Set your WhatsApp number here (Include country code, digits only)
+        const WHATSAPP_NUMBER = "918870227915"; 
+
+        // INVENTORY DATA SYSTEM (Easily add 10, 50, or 100+ books here)
+        const books = [
+            { id: 1, title: "Introduction to Algorithms", price: 89.99 },
+            { id: 2, title: "Clean Code", price: 34.99 },
+            { id: 3, title: "Design Patterns", price: 42.50 },
+            { id: 4, title: "Compilers: Principles & Techniques", price: 75.00 },
+            { id: 5, title: "Computer Networking", price: 65.00 }
+        ];
+
+        // IN-MEMORY APPLICATION STATE
+        let cart = {};
+
+        // RENDER FRONTEND METHOD
+        function renderBooks() {
+            const container = document.getElementById('books-container');
+            container.innerHTML = books.map(book => `
+                <div class="book-card">
+                    <div>
+                        <h3>${book.title}</h3>
+                        <div class="price">$${book.price.toFixed(2)}</div>
+                    </div>
+                    <button onclick="addToCart(${book.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        // STATE MUTATION: ADD ITEM
+        function addToCart(id) {
+            if (cart[id]) {
+                cart[id].qty += 1;
+            } else {
+                const book = books.find(b => b.id === id);
+                cart[id] = { ...book, qty: 1 };
+            }
+            renderCart();
+        }
+
+        // STATE MUTATION: REMOVE ITEM
+        function removeFromCart(id) {
+            delete cart[id];
+            renderCart();
+        }
+
+        // RENDER CART & CALCULATE TOTALS
+        function renderCart() {
+            const itemsContainer = document.getElementById('cart-items');
+            const totalContainer = document.getElementById('cart-total');
+            
+            let html = '';
+            let total = 0;
+
+            Object.values(cart).forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.title}</strong><br>
+                            ${item.qty} x $${item.price.toFixed(2)}
+                        </div>
+                        <button onclick="removeFromCart(${item.id})">X</button>
+                    </div>
+                `;
+            });
+
+            if(html === '') html = '<p style="color:#777;">Your cart is empty.</p>';
+            
+            itemsContainer.innerHTML = html;
+            totalContainer.innerText = total.toFixed(2);
+        }
+
+        // DATA SERIALIZATION & WHATSAPP GATEWAY HANDLER
+        function checkoutViaWhatsApp(event) {
+            event.preventDefault();
+            
+            const cartArray = Object.values(cart);
+            if (cartArray.length === 0) {
+                alert("Your cart is empty! Please add some books first.");
+                return;
+            }
+
+            // Constructing string payload
+            let message = `🛒 *NEW BOOKSTORE ORDER*\n`;
+            message += `-----------------------------\n`;
+            
+            let grandTotal = 0;
+            cartArray.forEach((item, index) => {
+                const cost = item.price * item.qty;
+                grandTotal += cost;
+                message += `${index + 1}. ${item.title}\n   *Qty:* ${item.qty} | *Price:* $${cost.toFixed(2)}\n`;
+            });
+
+            message += `-----------------------------\n`;
+            message += `💰 *Grand Total:* $${grandTotal.toFixed(2)}\n\n`;
+            message += `Please confirm availability and send your preferred payment method details. Thank you!`;
+
+            // URI Encoding the text payload
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me{WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+            // Redirecting user to browser API gateway
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // INITIALIZE APP
+        renderBooks();
+        renderCart();
+    </script>
+</body>
+</html>
