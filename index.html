@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Book Store | Professional Portfolio</title>
-    <!-- Bootstrap 5 & Google Font Systems -->
+    <title>KiB Tara | Children's Books</title>
+    <!-- FIXED BOOTSTRAP 5 STYLING CONTENT PIPELINE LINK -->
     <link href="https://jsdelivr.net" rel="stylesheet">
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
@@ -12,65 +12,62 @@
             --astra-blue: #0274be; 
             --astra-dark: #191919; 
             --astra-text: #4b4b4b;
-            --astra-light: #f9fa9f; 
             --whatsapp-green: #25D366; 
         }
         body { font-family: 'Inter', sans-serif; color: var(--astra-text); background-color: #f8f9fa; }
         
-        /* Astra Navigation Layout Structure */
-        .navbar { background: #ffffff; border-bottom: 1px solid #eaeaea; padding: 18px 0; }
-        .navbar-brand { font-weight: 700; color: var(--astra-dark) !important; letter-spacing: -0.5px; }
-        .nav-link { font-weight: 500; color: var(--astra-text) !important; cursor: pointer; transition: color 0.15s; font-size: 0.95rem; }
+        /* Fixed Horizontal Navbar Configuration Layout */
+        .navbar { background: #ffffff !important; border-bottom: 1px solid #eaeaea; padding: 15px 0; }
+        .navbar-brand { font-weight: 700; color: var(--astra-dark) !important; font-size: 1.5rem; }
+        .nav-link { font-weight: 600; color: var(--astra-text) !important; cursor: pointer; transition: color 0.15s; padding: 0.5rem 1rem !important; }
         .nav-link:hover, .nav-link.active-nav { color: var(--astra-blue) !important; }
         
-        /* Views Routing Layer Engine */
-        .page-view { display: none; min-height: 70vh; animation: astraPageFade 0.3s ease-in-out forwards; }
-        .page-view.active-view { display: block; }
-        @keyframes astraPageFade { from { opacity: 0; } to { opacity: 1; } }
+        /* Multi-Page Tab Switching Router Layout Matrix */
+        .page-view { display: none; min-height: 70vh; animation: pageFadeIn 0.3s ease-in-out forwards; }
+        .active-view { display: block; }
+        @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Brainstorm Starter Hero Banner Styling */
-        .hero-section { background-color: #f5f7fa; padding: 90px 0; border-radius: 4px; margin-bottom: 50px; }
+        /* Content Sections Styling */
+        .hero-section { background-color: #f5f7fa; padding: 80px 0; border-radius: 4px; margin-bottom: 50px; }
         .hero-title { font-size: 3.25rem; font-weight: 700; color: var(--astra-dark); letter-spacing: -1px; }
-        .btn-astra { background-color: var(--astra-blue); color: white; padding: 12px 28px; font-weight: 600; border-radius: 3px; transition: background 0.2s; border: none; }
+        .btn-astra { background-color: var(--astra-blue); color: white; padding: 12px 28px; font-weight: 600; border-radius: 4px; border: none; }
         .btn-astra:hover { background-color: #015c97; color: white; }
         
-        /* WooCommerce Product Frame Mechanics */
-        .book-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
-        .book-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #cbd5e1; }
-        .img-container { height: 260px; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center; }
+        /* WooCommerce Visual Framework Cards */
+        .book-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
+        .book-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .img-container { height: 260px; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center; border-radius: 4px 4px 0 0; }
         .img-container img { max-height: 100%; width: 100%; object-fit: cover; }
-        .btn-woo { background-color: transparent; border: 2px solid var(--astra-blue); color: var(--astra-blue); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 2px; padding: 8px 12px; width: 100%; transition: all 0.2s; }
+        .btn-woo { background-color: transparent; border: 2px solid var(--astra-blue); color: var(--astra-blue); font-weight: 600; border-radius: 4px; padding: 8px 12px; width: 100%; transition: all 0.2s; }
         .btn-woo:hover { background-color: var(--astra-blue); color: #ffffff; }
 
-        /* WooCommerce Slide-Out Drawer Panel */
+        /* Cart Side Drawer Slider Panel */
         .woo-cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: #ffffff; box-shadow: -5px 0 30px rgba(0,0,0,0.15); z-index: 1060; transition: right 0.3s ease-in-out; display: flex; flex-direction: column; }
         .woo-cart-sidebar.open-sidebar { right: 0; }
         .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1050; display: none; }
         .cart-overlay.show-overlay { display: block; }
-        
-        /* Floating App Cart Bag */
         .badge-count { font-size: 0.75rem; font-weight: 700; background: var(--astra-blue); color: #fff; border-radius: 50%; padding: 3px 7px; position: absolute; top: -8px; right: -12px; }
     </style>
 </head>
 <body>
 
-    <!-- Back-End Overlay Block -->
     <div class="cart-overlay" id="overlay-hook" onclick="toggleCartDrawer(false)"></div>
 
-    <!-- 1. NAVIGATION BAR COMPONENT -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+    <!-- 1. HORIZONTAL MENU COMPONENT -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" onclick="routeTo('home')">📚 PROFESSOR'S STORE</a>
+            <a class="navbar-brand" onclick="routeTo('home')">✨ KiB Tara</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#astraNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="astraNav">
-                <ul class="navbar-nav ms-auto align-items-center">
+                <!-- Links run strictly in a horizontal line -->
+                <ul class="navbar-nav ms-auto align-items-center mb-0">
                     <li class="nav-item"><a class="nav-link active-nav" id="lnk-home" onclick="routeTo('home')">Home</a></li>
                     <li class="nav-item"><a class="nav-link" id="lnk-books" onclick="routeTo('books')">Books</a></li>
                     <li class="nav-item"><a class="nav-link" id="lnk-about" onclick="routeTo('about')">About Author</a></li>
                     <li class="nav-item"><a class="nav-link" id="lnk-contact" onclick="routeTo('contact')">Contact Us</a></li>
-                    <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
+                    <li class="nav-item ms-lg-3">
                         <button class="btn btn-light position-relative border px-3 btn-sm" onclick="toggleCartDrawer(true)">
                             🛒 Cart Bag <span class="badge-count" id="nav-cart-badge">0</span>
                         </button>
@@ -80,7 +77,7 @@
         </div>
     </nav>
 
-    <!-- WOOCOMMERCE SLIDE-OUT CART PANEL DRAWER -->
+    <!-- SLIDE DRAWER SIDE PANEL -->
     <div class="woo-cart-sidebar" id="cart-drawer-panel">
         <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light">
             <h5 class="fw-bold mb-0">Shopping Cart</h5>
@@ -90,31 +87,31 @@
         <div class="p-3 border-top bg-light">
             <div class="d-flex justify-content-between fw-bold mb-3 fs-5">
                 <span>Subtotal:</span>
-                <span>$<span id="drawer-subtotal">0.00</span></span>
+                <span>₹<span id="drawer-subtotal">0.00</span></span>
             </div>
-            <button class="btn btn-astra w-100 py-2 text-uppercase font-size-sm" onclick="toggleCartDrawer(false); routeTo('checkout');">Proceed To Checkout</button>
+            <button class="btn btn-astra w-100 py-2 text-uppercase" onclick="toggleCartDrawer(false); routeTo('checkout');">Proceed To Checkout</button>
         </div>
     </div>
 
-    <!-- MAIN VIEWPORT ROUTER GRID CONTAINER -->
     <div class="container my-4">
 
-        <!-- A. HOME VIEW -->
+        <!-- A. HOME VIEW WITH RE-BRANDED COPY -->
         <section id="view-home" class="page-view active-view">
             <div class="hero-section text-center text-md-start">
                 <div class="container px-4 px-md-5">
                     <div class="row align-items-center">
                         <div class="col-md-7">
-                            <h1 class="hero-title mb-3">Academic Literature & Research</h1>
-                            <p class="lead mb-4 text-muted">Astra-inspired minimal storefront built exclusively for deploying publications and textbooks natively with no server strain.</p>
-                            <button class="btn btn-astra btn-lg" onclick="routeTo('books')">Explore All Books</button>
+                            <h1 class="hero-title mb-3">KiB Tara</h1>
+                            <h3 class="text-primary mb-3">Children's Book Hub</h3>
+                            <p class="lead mb-4 text-muted">Discover captivating illustrative storytelling, moral adventures, and enchanting educational publications crafted perfectly for curious young minds.</p>
+                            <button class="btn btn-astra btn-lg" onclick="routeTo('books')">Explore Children's Books</button>
                         </div>
-                        <div class="col-md-5 text-center mt-5 mt-md-0 fs-1 opacity-75 d-none d-md-block">📘🎓💻</div>
+                        <div class="col-md-5 text-center mt-5 mt-md-0 fs-1 opacity-75 d-none d-md-block">🎨🧸✨</div>
                     </div>
                 </div>
             </div>
             <div class="text-center mb-5">
-                <h3 class="fw-bold text-dark mb-4">Featured Publications</h3>
+                <h3 class="fw-bold text-dark mb-4">Featured Additions</h3>
                 <div class="row g-4" id="home-featured-grid"></div>
             </div>
         </section>
@@ -124,7 +121,7 @@
             <div class="row mb-4">
                 <div class="col-12 text-center">
                     <h2 class="fw-bold text-dark">Our Book Catalog</h2>
-                    <p class="text-muted">High-performance textbooks designed to break down abstract methodologies seamlessly.</p>
+                    <p class="text-muted">Explore magical storybook collections and educational titles.</p>
                 </div>
             </div>
             <div class="row g-4" id="catalog-grid-hook"></div>
@@ -134,13 +131,12 @@
         <section id="view-about" class="page-view">
             <div class="row align-items-center py-5">
                 <div class="col-md-4 text-center mb-4 mb-md-0">
-                    <div class="fs-1 py-5 bg-white border rounded shadow-sm mx-auto" style="width:180px; height:180px; line-height:80px;">👨‍🏫</div>
+                    <div class="fs-1 py-5 bg-white border rounded shadow-sm mx-auto" style="width:180px; height:180px; line-height:80px;">✍️📚</div>
                 </div>
                 <div class="col-md-8">
                     <h2 class="fw-bold text-dark mb-2">About the Author</h2>
-                    <h5 class="text-primary mb-3">Computer Science Educator & Author</h5>
-                    <p class="text-muted">Welcome to my academic publishing node. I develop curriculum-mapped books and references with clean structures that remove hurdles for programmers and systems engineering students.</p>
-                    <p class="text-muted">Every text file, layout matrix, and syntax breakdown featured within these chapters is tailored to maximize conceptual understanding while preparing readers for modern real-world technical implementation.</p>
+                    <h5 class="text-primary mb-3">Children's Literature Writer & Educator</h5>
+                    <p class="text-muted">Welcome to the creative engine behind KiB Tara. Dedicated to compiling impactful literature for children, my books mix rich illustrations with fundamental lessons to keep young readers curious and engaged.</p>
                 </div>
             </div>
         </section>
@@ -150,6 +146,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 card p-4 shadow-sm border bg-white">
                     <h3 class="fw-bold text-dark mb-2">Get in Touch</h3>
-                    <p class="text-muted mb-4">For bulk academic textbook distributions, institution access codes, or inquiries, message me below.</p>
+                    <p class="text-muted mb-4">For volume distribution arrangements, school access kits, or general catalog inquiries, drop a quick mail update.</p>
                     <form onsubmit="handleContactSubmission(event)">
-                        <div class="mb-3"><label class="form-label fw-bold">Name</label><input type="text" class="form-radius form-control" required id="c-name"></div>
+                        <div class="mb-3"><label class="form-label fw-bold">Name</label><input type="text" class="form-control" required id="c-name"></div>
+                        <div class="mb-3"><label class="form-label fw-bold">Email Address</label><input type="email" class="form-control" required id="c-email"></div>
+                        <div class="mb-3"><label class="form-label fw-bold">Message Text</label><textarea class="form-control" rows="4" required id="c-msg"></textarea></div>
+                        <button type="submit" class="btn btn-astra w-100">Send Inquiry</button>
+                    </form>
