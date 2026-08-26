@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KiB Tara | Children's Books Hub</title>
-<!-- Fixed Bootstrap 5 and FontAwesome CDNs -->
+<!-- Fixed Bootstrap 5 and FontAwesome Links Layouts -->
 <link href="https://jsdelivr.net" rel="stylesheet">
 <link rel='stylesheet' href='https://jsdelivr.net' media='all' />
 <style>
@@ -20,18 +20,18 @@
     body { font-family: 'Heebo', sans-serif; color: var(--ast-global-color-3); background-color: var(--ast-global-color-5); padding: 0; margin: 0; }
     h1, h2, h3, .brand-logo { font-family: 'EB Garamond', serif; font-weight: 600; color: var(--ast-global-color-2); }
     
-    /* Horizontal Navbar Header Design */
+    /* Fixed Horizontal Navbar Header Menu */
     .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: var(--ast-global-color-5); border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 1000; }
     .brand-logo { font-size: 1.75rem; font-weight: 700; cursor: pointer; text-decoration: none; }
     .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { font-weight: 600; font-size: 1.05rem; color: var(--ast-global-color-3); text-decoration: none; transition: color 0.15s; }
+    .nav-links a { font-weight: 600; font-size: 1.05rem; color: var(--ast-global-color-3); text-decoration: none; cursor: pointer; transition: color 0.15s; }
     .nav-links a:hover { color: var(--ast-global-color-0); }
     
-    /* Structural Page Components */
-    .hero-container { background-color: var(--ast-global-color-4); padding: 50px; border-radius: 12px; margin-top: 30px; margin-bottom: 50px; }
-    .section-padding { padding: 60px 0; border-bottom: 1px solid #f1f5f9; }
+    /* Section Display Layout Core Engine Rules */
+    .section-padding { padding: 80px 0; border-bottom: 1px solid #f1f5f9; }
+    .hero-container { background-color: var(--ast-global-color-4); padding: 50px; border-radius: 12px; margin-bottom: 30px; margin-top: 20px; }
     
-    /* Button Variations */
+    /* Buttons Custom Design Elements */
     .btn-purple { background-color: var(--ast-global-color-0); color: white; padding: 12px 28px; font-weight: 600; border-radius: 4px; border: none; transition: background 0.2s; text-decoration: none; display: inline-block; cursor: pointer; }
     .btn-purple:hover { background-color: var(--ast-global-color-1); color: white; }
     .btn-outline { background-color: transparent; border: 2px solid var(--ast-global-color-0); color: var(--ast-global-color-0); padding: 10px 26px; font-weight: 600; border-radius: 4px; transition: all 0.2s; text-decoration: none; display: inline-block; cursor: pointer; }
@@ -39,7 +39,7 @@
     .btn-whatsapp { background-color: var(--whatsapp-green); color: white; width: 100%; border: none; padding: 12px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer; }
     .btn-whatsapp:hover { background-color: #20ba5a; }
 
-    /* Product Display Layout Grid Cards */
+    /* WooCommerce Product Layout Grid Display Cards */
     .product-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; height: 100%; display: flex; flex-direction: column; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
     .card-thumbnail { height: 260px; background: #f8fafc; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; padding: 15px; }
     .card-thumbnail img { max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 4px; }
@@ -52,7 +52,7 @@
 </head>
 <body>
 
-    <!-- HORIZONTAL MENU HEADER -->
+    <!-- 1. HORIZONTAL MENU COMPONENT -->
     <nav class="navbar-container shadow-sm">
         <a class="brand-logo" href="#home">✨ KiB Tara</a>
         <ul class="nav-links">
@@ -65,7 +65,7 @@
 
     <div class="container">
 
-        <!-- SECTION 1: MAIN HERO DISPLAY -->
+        <!-- SECTION A: HERO HEADER LANDING -->
         <section id="home" class="hero-container shadow-sm row align-items-center g-5 mx-0">
             <div class="col-md-7">
                 <span class="text-uppercase tracking-wider fw-bold text-primary small d-block mb-2">Featured Release</span>
@@ -73,15 +73,15 @@
                 <p class="lead text-muted mb-4" style="font-size: 1.2rem;">This heartwarming adventure gently teaches children about overcoming anxiety, building internal resilience, and trusting their own natural pace.</p>
                 <div class="d-flex gap-3">
                     <button class="btn-purple" onclick="routeBuyNow('Pip\'s Brave Wings', '99.00')">Buy Now</button>
-                    <button class="btn-outline" onclick="alert('Sample preview book module active!')">Read Sample</button>
+                    <button class="btn-outline" onclick="alert('Sample preview presentation system initiated successfully!')">Read Sample</button>
                 </div>
             </div>
             <div class="col-md-5 text-center">
-                <img src="https://unsplash.com" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: contain;" alt="Pip's Brave Wings">
+                <img src="https://unsplash.com" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: contain;" alt="Pip's Brave Wings Master Cover Illustration">
             </div>
         </section>
 
-        <!-- SECTION 2: BOOKSTORE SHELF -->
+        <!-- SECTION B: BEST SELLING BOOKS AREA -->
         <section id="books" class="section-padding">
             <div class="text-center mb-5">
                 <h2 class="display-4 fw-bold">Best Selling Books</h2>
@@ -90,10 +90,10 @@
             <div class="row g-4" id="catalog-grid-node"></div>
         </section>
 
-        <!-- SECTION 3: BIOGRAPHY PANEL -->
+        <!-- SECTION C: BIOGRAPHY PANEL -->
         <section id="about" class="section-padding row align-items-center g-5 mx-0">
             <div class="col-md-4 text-center">
-                <div class="fs-1 py-5 bg-light border rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width:170px; height:170px;">👨‍🏫</div>
+                <div class="fs-1 py-5 bg-white border rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width:170px; height:170px;">👨‍🏫</div>
             </div>
             <div class="col-md-8">
                 <span class="text-uppercase fw-bold text-primary small d-block mb-2">Biography</span>
@@ -104,11 +104,11 @@
             </div>
         </section>
 
-        <!-- SECTION 4: INQUIRY SUBMISSION CONTACT -->
+        <!-- SECTION D: FORM INQUIRY CONTACT -->
         <section id="contact" class="section-padding" style="max-width: 650px; margin: 0 auto;">
             <div class="text-center mb-4">
                 <h2 class="fw-bold display-5">Contact Us</h2>
-                <p class="text-muted">For volume academic distributions or custom bookstore queries, log your records below.</p>
+                <p class="text-muted">For volume academic distributions or custom bookstore queries, log your record data lines below.</p>
             </div>
             <form onsubmit="handleContactAction(event)" class="card p-4 shadow-sm bg-white border border-light">
                 <div class="mb-3"><label class="form-label fw-bold">Your Name</label><input type="text" class="form-control" required id="f-name"></div>
@@ -120,20 +120,17 @@
 
     </div>
 
-    <!-- SITE FOOTER -->
+    <!-- GLOBAL SITE FOOTER -->
     <footer>
         <p class="copyright-text mb-0">Copyright &copy; 2026 KiB Tara | Powered by KiB Tara</p>
     </footer>
 
-    <!-- CENTRAL JAVASCRIPT LOGIC ENGINE -->
+    <!-- CENTRAL PROCESSING ENGINE VARIABLE SCRIPT -->
     <script>
         const ACTIVE_WHATSAPP_ID = "918870227915";
 
-        // MASTER BOOK COVERS INVENTORY
+        // MASTER PRODUCTS DATA REGISTER
         const CATALOG_COLLECTION = [
             { id: 1, title: "Tamil and English Alphabets", cat: "Activity Books", reg: "150.00", sale: "99.00", img: "https://unsplash.com" },
             { id: 2, title: "Pip's Brave Wings (English)", cat: "Yellow (Ages 5-6)", reg: "120.00", sale: "99.00", img: "https://unsplash.com" },
             { id: 3, title: "பிப்பின் வீர சிறகுகள் (Tamil)", cat: "Yellow (Ages 5-6)", reg: "120.00", sale: "99.00", img: "https://unsplash.com" },
-            { id: 4, title: "செய்வதே மகிழ்ச்சி", cat: "Yellow (Ages 5-6)", reg: "120.00", sale: "99.00", img: "https://unsplash.com" }
-        ];
-
