@@ -1,155 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiB Tara | Children's Books</title>
-    <!-- FIXED BOOTSTRAP 5 STYLING CONTENT PIPELINE LINK -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        :root { 
-            --astra-blue: #0274be; 
-            --astra-dark: #191919; 
-            --astra-text: #4b4b4b;
-            --whatsapp-green: #25D366; 
-        }
-        body { font-family: 'Inter', sans-serif; color: var(--astra-text); background-color: #f8f9fa; }
-        
-        /* Fixed Horizontal Navbar Configuration Layout */
-        .navbar { background: #ffffff !important; border-bottom: 1px solid #eaeaea; padding: 15px 0; }
-        .navbar-brand { font-weight: 700; color: var(--astra-dark) !important; font-size: 1.5rem; }
-        .nav-link { font-weight: 600; color: var(--astra-text) !important; cursor: pointer; transition: color 0.15s; padding: 0.5rem 1rem !important; }
-        .nav-link:hover, .nav-link.active-nav { color: var(--astra-blue) !important; }
-        
-        /* Multi-Page Tab Switching Router Layout Matrix */
-        .page-view { display: none; min-height: 70vh; animation: pageFadeIn 0.3s ease-in-out forwards; }
-        .active-view { display: block; }
-        @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KiB Tara | Children's Books Hub</title>
+<!-- Fixed Content Pipelines Links -->
+<link rel='stylesheet' id='astra-theme-css-css' href='https://jsdelivr.net' media='all' />
+<style>
+    :root {
+        --ast-global-color-0: #5f4ecb;
+        --ast-global-color-1: #4d3bc6;
+        --ast-global-color-2: #25272d;
+        --ast-global-color-3: #565a61;
+        --ast-global-color-4: #f2f5f7;
+        --ast-global-color-5: #ffffff;
+        --ast-global-color-6: #f2f5f7;
+        --ast-global-color-7: #424242;
+        --ast-global-color-8: #000000;
+        --whatsapp-green: #25D366;
+    }
+    body, button, input { font-family: 'Heebo', sans-serif; font-weight: 400; font-size: 16px; color: var(--ast-global-color-3); background-color: var(--ast-global-color-5); margin: 0; padding: 0; }
+    h1, h2, h3 { font-family: 'EB Garamond', serif; font-weight: 600; color: var(--ast-global-color-2); margin: 0 0 15px 0; }
+    
+    /* Fixed Horizontal Navigation Menu System */
+    .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: var(--ast-global-color-5); border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 1000; }
+    .brand-logo { font-size: 1.5rem; font-weight: 700; color: var(--ast-global-color-2); cursor: pointer; text-decoration: none; }
+    .nav-links { display: flex; gap: 25px; list-style: none; margin: 0; padding: 0; align-items: center; }
+    .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--ast-global-color-3); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active-tab { color: var(--ast-global-color-0); }
+    
+    /* Dynamic Multipage Subview Framework Rules */
+    .page-view { display: none; min-height: 80vh; padding: 40px; animation: pageSlideIn 0.3s ease-out; }
+    .active-view { display: block; }
+    @keyframes pageSlideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Content Sections Styling */
-        .hero-section { background-color: #f5f7fa; padding: 80px 0; border-radius: 4px; margin-bottom: 50px; }
-        .hero-title { font-size: 3.25rem; font-weight: 700; color: var(--astra-dark); letter-spacing: -1px; }
-        .btn-astra { background-color: var(--astra-blue); color: white; padding: 12px 28px; font-weight: 600; border-radius: 4px; border: none; }
-        .btn-astra:hover { background-color: #015c97; color: white; }
-        
-        /* WooCommerce Visual Framework Cards */
-        .book-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; transition: all 0.2s; height: 100%; display: flex; flex-direction: column; }
-        .book-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .img-container { height: 260px; overflow: hidden; background: #f1f5f9; display: flex; align-items: center; justify-content: center; border-radius: 4px 4px 0 0; }
-        .img-container img { max-height: 100%; width: 100%; object-fit: cover; }
-        .btn-woo { background-color: transparent; border: 2px solid var(--astra-blue); color: var(--astra-blue); font-weight: 600; border-radius: 4px; padding: 8px 12px; width: 100%; transition: all 0.2s; }
-        .btn-woo:hover { background-color: var(--astra-blue); color: #ffffff; }
+    /* Elegant Hero Banner Elements */
+    .hero-container { display: flex; align-items: center; gap: 40px; background-color: var(--ast-global-color-4); padding: 60px; border-radius: 12px; margin-bottom: 50px; background-image: url("https://github.io"); background-position: right center; background-repeat: no-repeat; background-size: contain; }
+    .hero-content { flex: 1; }
+    .hero-image-box { flex: 1; text-align: center; }
+    .hero-image-box img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .tagline-pill { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; color: var(--ast-global-color-0); margin-bottom: 10px; display: block; }
+    .display-title { font-size: 4.5rem; font-weight: 500; line-height: 1.1; margin-bottom: 20px; }
+    
+    /* Universal Button Mechanics */
+    .btn-purple { background-color: var(--ast-global-color-0); color: white; padding: 14px 30px; font-weight: 600; border-radius: 4px; border: none; cursor: pointer; display: inline-block; transition: background 0.2s; text-decoration: none; }
+    .btn-purple:hover { background-color: var(--ast-global-color-1); color: white; }
+    .btn-outline { background-color: transparent; border: 2px solid var(--ast-global-color-0); color: var(--ast-global-color-0); padding: 12px 28px; font-weight: 600; border-radius: 4px; cursor: pointer; display: inline-block; transition: all 0.2s; text-decoration: none; }
+    .btn-outline:hover { background-color: var(--ast-global-color-0); color: white; }
+    .btn-whatsapp { background-color: var(--whatsapp-green); color: white; width: 100%; border: none; padding: 12px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer; transition: background 0.2s; }
+    .btn-whatsapp:hover { background-color: #20ba5a; }
 
-        /* Cart Side Drawer Slider Panel */
-        .woo-cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: #ffffff; box-shadow: -5px 0 30px rgba(0,0,0,0.15); z-index: 1060; transition: right 0.3s ease-in-out; display: flex; flex-direction: column; }
-        .woo-cart-sidebar.open-sidebar { right: 0; }
-        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1050; display: none; }
-        .cart-overlay.show-overlay { display: block; }
-        .badge-count { font-size: 0.75rem; font-weight: 700; background: var(--astra-blue); color: #fff; border-radius: 50%; padding: 3px 7px; position: absolute; top: -8px; right: -12px; }
-    </style>
+    /* Product Grid & WooCommerce Card Structures */
+    .section-title-wrap { text-align: center; margin-bottom: 40px; }
+    .section-title-wrap h2 { font-size: 3rem; font-weight: 600; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 30px; }
+    .product-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(0,0,0,0.06); }
+    .card-thumbnail { height: 260px; background: #f8fafc; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 15px; }
+    .card-thumbnail img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .product-cat { font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; font-weight: 600; margin-bottom: 5px; display: block; }
+    .product-title { font-size: 1.15rem; font-weight: 700; color: var(--ast-global-color-2); margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.7em; line-height: 1.35; }
+    .price-container { margin-bottom: 15px; font-size: 1.1rem; }
+    .price-del { text-decoration: line-through; color: #94a3b8; margin-right: 8px; font-size: 0.95rem; }
+    .price-ins { color: var(--ast-global-color-2); font-weight: 700; }
+    .sale-badge { position: absolute; top: 15px; left: 15px; background: var(--ast-global-color-0); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    
+    /* About & Biography Column Layouts */
+    .bio-container { display: flex; gap: 50px; align-items: center; padding: 60px 0; background: url("https://github.io") no-repeat left center; background-size: contain; }
+    .bio-image-frame { flex: 1; text-align: center; }
+    .bio-image-frame img { max-width: 80%; height: auto; border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    .bio-text-frame { flex: 1.5; }
+    
+    /* Footer Layout Elements */
+    footer { background-color: var(--ast-global-color-2); color: var(--ast-global-color-5); padding: 40px; text-align: center; margin-top: 60px; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; padding: 0; margin: 0 0 20px 0; }
+    .footer-links a { color: var(--ast-global-color-5); text-decoration: none; opacity: 0.8; transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 1; }
+    .copyright-text { font-size: 0.85rem; opacity: 0.6; margin: 0; }
+
+    /* Responsive Queries Fixes */
+    @media (max-width: 768px) {
+        .navbar-container { padding: 15px 20px; flex-direction: column; gap: 15px; }
+        .hero-container, .bio-container { flex-direction: column; padding: 30px 20px; text-align: center; background-image: none; }
+        .display-title { font-size: 2.5rem; }
+        .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        .bio-image-frame img { max-width: 100%; }
+    }
+</style>
+<link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <div class="cart-overlay" id="overlay-hook" onclick="toggleCartDrawer(false)"></div>
-
-    <!-- 1. HORIZONTAL MENU COMPONENT -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" onclick="routeTo('home')">✨ KiB Tara</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#astraNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="astraNav">
-                <!-- Links run strictly in a horizontal line -->
-                <ul class="navbar-nav ms-auto align-items-center mb-0">
-                    <li class="nav-item"><a class="nav-link active-nav" id="lnk-home" onclick="routeTo('home')">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" id="lnk-books" onclick="routeTo('books')">Books</a></li>
-                    <li class="nav-item"><a class="nav-link" id="lnk-about" onclick="routeTo('about')">About Author</a></li>
-                    <li class="nav-item"><a class="nav-link" id="lnk-contact" onclick="routeTo('contact')">Contact Us</a></li>
-                    <li class="nav-item ms-lg-3">
-                        <button class="btn btn-light position-relative border px-3 btn-sm" onclick="toggleCartDrawer(true)">
-                            🛒 Cart Bag <span class="badge-count" id="nav-cart-badge">0</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <!-- NAVBAR HEADER MENU BLOCK -->
+    <nav class="navbar-container">
+        <a class="brand-logo" onclick="switchTab('home')">✨ KiB Tara</a>
+        <ul class="nav-links">
+            <li><a id="tab-home" class="active-tab" onclick="switchTab('home')">Home</a></li>
+            <li><a id="tab-books" onclick="switchTab('books')">Books</a></li>
+            <li><a id="tab-about" onclick="switchTab('about')">About Author</a></li>
+            <li><a id="tab-contact" onclick="switchTab('contact')">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- SLIDE DRAWER SIDE PANEL -->
-    <div class="woo-cart-sidebar" id="cart-drawer-panel">
-        <div class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light">
-            <h5 class="fw-bold mb-0">Shopping Cart</h5>
-            <button class="btn-close" onclick="toggleCartDrawer(false)"></button>
-        </div>
-        <div class="p-3 flex-grow-1 overflow-auto" id="drawer-items-hook"></div>
-        <div class="p-3 border-top bg-light">
-            <div class="d-flex justify-content-between fw-bold mb-3 fs-5">
-                <span>Subtotal:</span>
-                <span>₹<span id="drawer-subtotal">0.00</span></span>
-            </div>
-            <button class="btn btn-astra w-100 py-2 text-uppercase" onclick="toggleCartDrawer(false); routeTo('checkout');">Proceed To Checkout</button>
-        </div>
-    </div>
+    <!-- WEBSITE PAGES ROUTER CONTAINER -->
+    <main class="container">
 
-    <div class="container my-4">
-
-        <!-- A. HOME VIEW WITH RE-BRANDED COPY -->
+        <!-- 1. HOME VIEW PANEL -->
         <section id="view-home" class="page-view active-view">
-            <div class="hero-section text-center text-md-start">
-                <div class="container px-4 px-md-5">
-                    <div class="row align-items-center">
-                        <div class="col-md-7">
-                            <h1 class="hero-title mb-3">KiB Tara</h1>
-                            <h3 class="text-primary mb-3">Children's Book Hub</h3>
-                            <p class="lead mb-4 text-muted">Discover captivating illustrative storytelling, moral adventures, and enchanting educational publications crafted perfectly for curious young minds.</p>
-                            <button class="btn btn-astra btn-lg" onclick="routeTo('books')">Explore Children's Books</button>
-                        </div>
-                        <div class="col-md-5 text-center mt-5 mt-md-0 fs-1 opacity-75 d-none d-md-block">🎨🧸✨</div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="tagline-pill">New Release</span>
+                    <h1 class="display-title">Pip's Brave Wings</h1>
+                    <p style="font-size: 1.25rem; line-height: 1.6; margin-bottom: 30px;">This heartwarming adventure gently teaches children about overcoming anxiety and trusting their own pace.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="btn-purple" onclick="routeBuyNow('Pip\'s Brave Wings', '99.00')">Buy Now</button>
+                        <button class="btn-outline" onclick="alert('Sample Reading script coming soon!')">Read Sample</button>
                     </div>
                 </div>
+                <div class="hero-image-box">
+                    <img src="https://github.io" alt="Pip's Brave Wings Cover">
+                </div>
             </div>
-            <div class="text-center mb-5">
-                <h3 class="fw-bold text-dark mb-4">Featured Additions</h3>
-                <div class="row g-4" id="home-featured-grid"></div>
+
+            <!-- HOME PAGE MINI FEATURED COLLECTION -->
+            <div style="margin-top: 60px;">
+                <div class="section-title-wrap">
+                    <h2>Featured Additions</h2>
+                </div>
+                <div class="products-grid" id="home-featured-injection"></div>
             </div>
         </section>
 
-        <!-- B. BOOKS CATALOG VIEW -->
+        <!-- 2. BOOKS COLLECTION CATALOG VIEW -->
         <section id="view-books" class="page-view">
-            <div class="row mb-4">
-                <div class="col-12 text-center">
-                    <h2 class="fw-bold text-dark">Our Book Catalog</h2>
-                    <p class="text-muted">Explore magical storybook collections and educational titles.</p>
-                </div>
-            </div>
-            <div class="row g-4" id="catalog-grid-hook"></div>
-        </section>
-
-        <!-- C. ABOUT AUTHOR VIEW -->
-        <section id="view-about" class="page-view">
-            <div class="row align-items-center py-5">
-                <div class="col-md-4 text-center mb-4 mb-md-0">
-                    <div class="fs-1 py-5 bg-white border rounded shadow-sm mx-auto" style="width:180px; height:180px; line-height:80px;">✍️📚</div>
-                </div>
-                <div class="col-md-8">
-                    <h2 class="fw-bold text-dark mb-2">About the Author</h2>
-                    <h5 class="text-primary mb-3">Children's Literature Writer & Educator</h5>
-                    <p class="text-muted">Welcome to the creative engine behind KiB Tara. Dedicated to compiling impactful literature for children, my books mix rich illustrations with fundamental lessons to keep young readers curious and engaged.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- D. CONTACT US VIEW -->
-        <section id="view-contact" class="page-view">
-            <div class="row justify-content-center">
-                <div class="col-md-6 card p-4 shadow-sm border bg-white">
-                    <h3 class="fw-bold text-dark mb-2">Get in Touch</h3>
-                    <p class="text-muted mb-4">For volume distribution arrangements, school access kits, or general catalog inquiries, drop a quick mail update.</p>
-                    <form onsubmit="handleContactSubmission(event)">
-                        <div class="mb-3"><label class="form-label fw-bold">Name</label><input type="text" class="form-control" required id="c-name"></div>
-                        <div class="mb-3"><label class="form-label fw-bold">Email Address</label><input type="email" class="form-control" required id="c-email"></div>
-                        <div class="mb-3"><label class="form-label fw-bold">Message Text</label><textarea class="form-control" rows="4" required id="c-msg"></textarea></div>
-                        <button type="submit" class="btn btn-astra w-100">Send Inquiry</button>
-                    </form>
+            <div class="section-title-wrap">
+                <h2>Best Selling Books</h2>
