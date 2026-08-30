@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiB Tara | Children's Books Store</title>
     <style>
-        /* COLOR CONFIGURATIONS & THEME ARCHITECTURE */
         :root {
             --astra-dark: #1f2937;
             --astra-muted: #6b7280;
             --astra-link: #4f46e5;
             --whatsapp-green: #25d366;
             --whatsapp-hover: #20ba5a;
-            --bg-canvas: #ffffff;
+            --bg-canvas: #fbf9f5;
             --border-tint: #e5e7eb;
         }
 
@@ -20,7 +19,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         }
 
         body {
@@ -29,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* NAVIGATION HEADER */
+        /* HEADER */
         header {
             background: #ffffff;
             border-bottom: 1px solid var(--border-tint);
@@ -41,252 +40,276 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo-box {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             color: #ffffff;
             background-color: #4b5563;
-            padding: 6px 20px;
+            padding: 6px 18px;
             border-radius: 4px;
             text-decoration: none;
             font-style: italic;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--astra-dark);
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--astra-link);
-        }
-
-        /* HERO BOOK BANNER ARRANGEMENT */
-        .hero-section {
+        /* GRID SECTION */
+        .store-container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .books-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        @media (min-width: 768px) {
-            .hero-section {
-                grid-template-columns: 1.1fr 0.9fr;
-            }
-        }
-
-        .hero-details {
-            display: flex;
-            flex-direction: flex-col;
-            justify-content: center;
+        /* CARDS */
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--border-tint);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
         }
 
-        .tag-release {
-            color: #6366f1;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+        .book-card:hover {
+            transform: translateY(-4px);
         }
 
-        .hero-title {
-            font-size: 42px;
+        .img-box {
+            position: relative;
+            background: #f3f4f6;
+            padding-bottom: 125%;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .book-name {
+            font-size: 18px;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 25px;
+            margin-bottom: 8px;
             color: #111827;
         }
 
-        .hero-description {
-            font-size: 16px;
+        .book-summary {
+            font-size: 14px;
             color: var(--astra-muted);
-            margin-bottom: 35px;
-            max-width: 500px;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .action-tray {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+        .price-row {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .btn-tray {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            font-size: 15px;
+            padding: 10px;
+            font-size: 13px;
             font-weight: 600;
             border-radius: 4px;
+            text-align: center;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
             border: none;
         }
 
-        .btn-primary {
-            background-color: var(--astra-link);
-            color: white;
-        }
+        .btn-wa { background: var(--whatsapp-green); color: white; }
+        .btn-wa:hover { background: var(--whatsapp-hover); }
+        .btn-more { background: #f3f4f6; color: #374151; }
+        .btn-more:hover { background: #e5e7eb; }
 
-        .btn-primary:hover {
-            background-color: #4338ca;
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp-green);
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: var(--whatsapp-hover);
-        }
-
-        /* DISPLAY ILLUSTRATION FRAMEWORK */
-        .showcase-frame {
+        /* MODAL POPUP FOR READ MORE */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: #f9fafb;
-            border-radius: 8px;
+            justify-content: center;
+            z-index: 1000;
             padding: 20px;
-            border: 1px solid var(--border-tint);
+            display: none;
         }
 
-        .showcase-frame img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        .modal-box {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
         }
 
-        /* EXTREME BASE FOOTER ELEMENT */
-        footer {
-            border-top: 1px solid var(--border-tint);
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 60px;
-            color: var(--astra-muted);
-            font-size: 14px;
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 15px;
+            font-size: 24px;
+            background: none; border: none; cursor: pointer; color: #9ca3af;
         }
+
+        .modal-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
+        .modal-desc { font-size: 15px; color: var(--text-dark); margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- SITE BAR MENU HEADER -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo-box">KiB Tana</a>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#books">Books</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#" class="logo-box">KiB Tara</a>
         </div>
     </header>
 
-    <!-- CONTENT DISPLAY ZONE -->
-    <main id="books" class="hero-section">
-        
-        <!-- TEXT CONTENT WRAPPER CONTAINER (EDIT DETAILS HERE) -->
-        <div class="hero-details">
-            <div class="tag-release" id="meta-tag">NEW RELEASE</div>
-            
-            <!-- Book Title Placeholder -->
-            <h1 class="hero-title" id="book-title">செய்வதே மகிழ்ச்சி</h1>
-            
-            <!-- Book Description Summary Placeholder -->
-            <p class="hero-description" id="book-desc">
-                செய்யும் ஒவ்வொரு செயலிலும் மகிழ்ச்சியைக் காண்பது எப்படி என்பதை குழந்தைகளுக்கு கற்றுத்தரும் ஓர் அழகான கதைப் புத்தகம்.
-            </p>
-            
-            <!-- Dynamic Cost Factor Badge -->
-            <div style="font-size: 22px; font-weight: bold; margin-bottom: 25px; color: #111827;">
-                Price: <span id="book-price">₹299</span>
-            </div>
-
-            <!-- Operational Control Action Links Buttons Chassis -->
-            <div class="action-tray">
-                <button onclick="launchWhatsAppOrder()" class="btn btn-whatsapp">💬 Buy Now / Order on WhatsApp</button>
-                <a href="https://wa.me" target="_blank" class="btn btn-primary" style="background-color: #f3f4f6; color: #374151;">Read Sample</a>
-            </div>
-        </div>
-
-        <!-- RIGHT SIDE GRAPHIC BOX HOLDER (IMAGE PLACEHOLDER) -->
-        <div class="showcase-frame">
-            <!-- Replace 'cover.jpg' with your real uploaded laptop image filename -->
-            <img id="book-image" src="cover.jpg" alt="KiB Tara Book Cover Layer">
-        </div>
-
+    <main class="store-container">
+        <h1 class="section-title">Our Children's Book Collection</h1>
+        <div class="books-grid" id="grid-target"></div>
     </main>
 
-    <!-- FOOTER ARCHITECTURE ELEMENT -->
-    <footer id="contact">
-        <p>&copy; 2026 KiB Tara Books Store. All Rights Reserved. Author Channel Connection.</p>
-    </footer>
+    <!-- DESCRIPTION POPUP COMPONENT -->
+    <div id="more-modal" class="modal-overlay" onclick="closeDetailsModal(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="document.getElementById('more-modal').style.display='none'">&times;</button>
+            <h3 id="pop-title" class="modal-title"></h3>
+            <p id="pop-desc" class="modal-desc"></p>
+            <button id="pop-btn" class="btn btn-wa" style="width:100%; padding:12px;">💬 Order this Book via WhatsApp</button>
+        </div>
+    </div>
 
-    <!-- INVENTORY CONTROL LOGICAL SCRIPT STRINGS -->
     <script>
+        const SELLER_PHONE = "918870227915";
+
         /*******************************************************************************
-         * ⚙️ LAPTOP DIRECT DICTIONARY CONFIGURATIONS
-         * Edit the variables below right from your laptop text editor to update your page!
+         * 📝 EDIT YOUR 10 BOOKS HERE DIRECTLY FROM YOUR LAPTOP
+         * Simply copy-paste a block to add, modify titles, descriptions, or prices.
          *******************************************************************************/
-        
-        const SELLER_WHATSAPP_NUMBER = "918870227915"; // Your business routing phone
-        
-        // This structural template fields maps strings variables output rules straight into DOM
-        const ACTIVE_BOOK_DETAILS = {
-            title: "செய்வதே மகிழ்ச்சி",
-            price: "₹299",
-            description: "செய்யும் ஒவ்வொரு செயலிலும் மகிழ்ச்சியைக் காண்பது எப்படி என்பதை குழந்தைகளுக்கு கற்றுத்தரும் ஓர் அழகான கதைப் புத்தகம்.",
-            image_filename: "cover.jpg" // Upload your book cover photo to github with this exact filename
-        };
+        const MY_10_BOOKS_DATABASE = [
+            {
+                id: 1,
+                title: "செய்வதே மகிழ்ச்சி",
+                price: "₹299",
+                image: "book1.jpg", // Name of the image you upload to GitHub
+                description: "செய்யும் ஒவ்வொரு செயலிலும் மகிழ்ச்சியைக் காண்பது எப்படி என்பதை குழந்தைகளுக்கு கற்றுத்தரும் ஓர் அழகான கதைப் புத்தகம்."
+            },
+            {
+                id: 2,
+                title: "The Laughing Dolphin",
+                price: "₹250",
+                image: "book2.jpg",
+                description: "A funny ocean adventure tracking a cheerful dolphin teaching marine creature companions how to share bright smiles."
+            },
+            {
+                id: 3,
+                title: "The Starry Dreamer",
+                price: "₹320",
+                image: "book3.jpg",
+                description: "An exceptional evening bedtime illustration book focused on wild imaginative space science topics for toddlers."
+            },
+            {
+                id: 4,
+                title: "Book 4 Title Here",
+                price: "₹199",
+                image: "book4.jpg",
+                description: "Type full descriptions here. Users can press 'Read More' to see this entire paragraph text bubble pop up seamlessly."
+            },
+            {
+                id: 5,
+                title: "Book 5 Title Here",
+                price: "₹199",
+                image: "book5.jpg",
+                description: "Type full descriptions here."
+            },
+            {
+                id: 6,
+                title: "Book 6 Title Here",
+                price: "₹199",
+                image: "book6.jpg",
+                description: "Type full descriptions here."
+            },
+            {
+                id: 7,
+                title: "Book 7 Title Here",
+                price: "₹199",
+                image: "book7.jpg",
+                description: "Type full descriptions here."
+            },
+            {
+                id: 8,
+                title: "Book 8 Title Here",
+                price: "₹199",
+                image: "book8.jpg",
+                description: "Type full descriptions here."
+            },
+            {
+                id: 9,
+                title: "Book 9 Title Here",
+                price: "₹199",
+                image: "book9.jpg",
+                description: "Type full descriptions here."
+            },
+            {
+                id: 10,
+                title: "Book 10 Title Here",
+                price: "₹199",
+                image: "book10.jpg",
+                description: "Type full descriptions here."
+            }
+        ];
 
-        // INJECTION PIPELINES LOGICAL HANDLING DISPATCH ENGINE
+        // CARD GENERATION LOGIC
         window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('book-title').innerText = ACTIVE_BOOK_DETAILS.title;
-            document.getElementById('book-price').innerText = ACTIVE_BOOK_DETAILS.price;
-            document.getElementById('book-desc').innerText = ACTIVE_BOOK_DETAILS.description;
-            document.getElementById('book-image').src = ACTIVE_BOOK_DETAILS.image_filename;
-        });
-
-        // WHATSAPP LINK ASSEMBLY STRATEGY
-        function launchWhatsAppOrder() {
-            let messageText = `📚 *NEW BOOK ORDER - KiB Tara* 📚\n\n`;
-            messageText += `Hello Mrs. Jegatha Dattani, I would like to order a copy of your children's book:\n\n`;
-            messageText += `• *Book Title:* ${ACTIVE_BOOK_DETAILS.title}\n`;
-            messageText += `• *Price:* ${ACTIVE_BOOK_DETAILS.price}\n\n`;
-            messageText += `-----------------------------\n`;
-            messageText += `✍️ *My Shipping Address Details:*\n`;
-            messageText += `• Name: \n`;
-            messageText += `• Full Delivery Address: \n`;
-            messageText += `• Pin Code: \n\n`;
-            messageText += `Please share your payment details (GPay / PhonePe / UPI) to complete my secure order. Thank you!`;
-
-            const cleanUrlTargetString = `https://wa.me{SELLER_WHATSAPP_NUMBER}?text=${encodeURIComponent(messageText)}`;
-            window.open(cleanUrlTargetString, '_blank');
-        }
-    </script>
-</body>
-</html>
+            const wrapper = document.getElementById('grid-target');
+            MY_10_BOOKS_DATABASE.forEach(book => {
+                const markup = `
+                    <div class="book-card">
+                        <div class="img-box">
+                            <img src="${book.image}" alt="${book.title}">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="book-name">${book.title}</h3>
+                            <p class="book-summary">${book.description}</p>
+                            <div class="price-row">${book.price}</div>
+                            <div class="btn-tray">
