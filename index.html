@@ -1,137 +1,177 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KiB Tara | Children's Books Hub</title>
-<!-- Bootstrap 5 Layout Grids System -->
-<link href="https://jsdelivr.net" rel="stylesheet">
-<link rel='stylesheet' href='https://jsdelivr.net' media='all' />
-<style>
-    :root {
-        --ast-global-color-0: #5f4ecb;
-        --ast-global-color-1: #4d3bc6;
-        --ast-global-color-2: #25272d;
-        --ast-global-color-3: #565a61;
-        --ast-global-color-4: #f2f5f7;
-        --ast-global-color-5: #ffffff;
-        --whatsapp-green: #25D366;
-    }
-    body { font-family: 'Heebo', sans-serif; color: var(--ast-global-color-3); background-color: var(--ast-global-color-5); padding: 0; margin: 0; }
-    h1, h2, h3, .brand-logo { font-family: 'EB Garamond', serif; font-weight: 600; color: var(--ast-global-color-2); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kiB tara | Children's Books by Mrs. Jegatha Dattani</title>
+    <!-- Tailwind CSS for Astra-like Clean UI -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Google Fonts for Whimsical Typography -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     
-    /* Horizontal Navbar Style Settings */
-    .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: var(--ast-global-color-5); border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 1000; }
-    .brand-logo { font-size: 1.75rem; font-weight: 700; cursor: pointer; text-decoration: none; }
-    .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { font-weight: 600; font-size: 1.05rem; color: var(--ast-global-color-3); text-decoration: none; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--ast-global-color-0); }
-    
-    /* Display Page Grid Blocks */
-    .hero-container { background-color: var(--ast-global-color-4); padding: 50px; border-radius: 12px; margin-top: 30px; margin-bottom: 50px; }
-    .section-padding { padding: 60px 0; border-bottom: 1px solid #f1f5f9; }
-    
-    /* Universal Button Mechanics */
-    .btn-purple { background-color: var(--ast-global-color-0); color: white; padding: 12px 28px; font-weight: 600; border-radius: 4px; border: none; transition: background 0.2s; text-decoration: none; display: inline-block; cursor: pointer; }
-    .btn-purple:hover { background-color: var(--ast-global-color-1); color: white; }
-    .btn-outline { background-color: transparent; border: 2px solid var(--ast-global-color-0); color: var(--ast-global-color-0); padding: 10px 26px; font-weight: 600; border-radius: 4px; transition: all 0.2s; text-decoration: none; display: inline-block; cursor: pointer; }
-    .btn-outline:hover { background-color: var(--ast-global-color-0); color: white; }
-    .btn-whatsapp { background-color: var(--whatsapp-green); color: white; width: 100%; border: none; padding: 12px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; cursor: pointer; }
-    .btn-whatsapp:hover { background-color: #20ba5a; }
-
-    /* Product Grid Cards Framework */
-    .product-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; height: 100%; display: flex; flex-direction: column; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-    .card-thumbnail { height: 260px; background: #f8fafc; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; padding: 15px; }
-    .card-thumbnail img { max-height: 100%; max-width: 100%; object-fit: contain; border-radius: 4px; }
-    .sale-badge { position: absolute; top: 15px; left: 15px; background: var(--ast-global-color-0); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; z-index: 10; }
-    .card-content-area { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    
-    footer { background-color: var(--ast-global-color-2); color: white; padding: 40px; text-align: center; margin-top: 80px; }
-</style>
-<link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fbf9f5;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Fredoka', sans-serif;
+        }
+    </style>
 </head>
-<body>
+<body class="text-gray-800">
 
-    <!-- 1. NAVIGATION LAYOUT -->
-    <nav class="navbar-container shadow-sm">
-        <a class="brand-logo" href="#home">✨ KiB Tara</a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#books">Books</a></li>
-            <li><a href="#about">About Author</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-
-        <!-- SECTION A: HERO LANDING -->
-        <section id="home" class="hero-container shadow-sm row align-items-center g-5 mx-0">
-            <div class="col-md-7">
-                <span class="text-uppercase tracking-wider fw-bold text-primary small d-block mb-2">Featured Release</span>
-                <h1 class="display-4 fw-bold mb-3">Pip's Brave Wings</h1>
-                <p class="lead text-muted mb-4" style="font-size: 1.2rem;">This heartwarming adventure gently teaches children about overcoming anxiety, building internal resilience, and trusting their own natural pace.</p>
-                <div class="d-flex gap-3">
-                    <button class="btn-purple" onclick="routeBuyNow('Pip\'s Brave Wings', '99.00')">Buy Now</button>
-                    <button class="btn-outline" onclick="alert('Sample preview presentation system initiated successfully!')">Read Sample</button>
-                </div>
-            </div>
-            <div class="col-md-5 text-center">
-                <!-- Pointing directly to working, high-res web illustrations -->
-                <img src="https://unsplash.com" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: contain;" alt="Pip's Brave Wings Book">
-            </div>
-        </section>
-
-        <!-- SECTION B: PRODUCT CATALOG SHELF -->
-        <section id="books" class="section-padding">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold">Best Selling Books</h2>
-                <p class="text-muted fs-5">Explore magical storybook collections and bilingual educational titles.</p>
-            </div>
-            <div class="row g-4" id="catalog-grid-node"></div>
-        </section>
-
-        <!-- SECTION C: AUTHOR INFO PANEL -->
-        <section id="about" class="section-padding row align-items-center g-5 mx-0">
-            <div class="col-md-4 text-center">
-                <div class="fs-1 py-5 bg-light border rounded-circle shadow-sm mx-auto d-flex align-items-center justify-content-center" style="width:170px; height:170px;">👨‍🏫</div>
-            </div>
-            <div class="col-md-8">
-                <span class="text-uppercase fw-bold text-primary small d-block mb-2">Biography</span>
-                <h2 class="display-4 fw-bold mb-3">KiB Tara</h2>
-                <p class="lead text-muted mb-3" style="font-size:1.15rem; line-height:1.7; font-style: italic;">"KiB Tara" is a dedicated academic professional, engineer, and educator with over five years of experience teaching and mentoring students. Holding advanced degrees in Engineering and Computer Science, she is passionate about making complex ideas simple, engaging, and impactful.</p>
-                <p class="text-muted mb-4" style="font-size:1.1rem; line-height:1.7;">Fluent in English, Tamil, and Telugu, Jegatha brings her love for storytelling and traditional Indian philosophy together to write meaningful, bilingual children's books. Through her writing, she aims to help young minds build emotional resilience, mindfulness, and a lifelong love for learning.</p>
-                <a href="#books" class="btn-purple">Browse Full Library Book Shelf</a>
-            </div>
-        </section>
-
-        <!-- SECTION D: FEEDBACK INTAKE FORM -->
-        <section id="contact" class="section-padding" style="max-width: 650px; margin: 0 auto;">
-            <div class="text-center mb-4">
-                <h2 class="fw-bold display-5">Contact Us</h2>
-                <p class="text-muted">For volume academic distributions or custom bookstore queries, log your record data lines below.</p>
-            </div>
-            <form onsubmit="handleContactAction(event)" class="card p-4 shadow-sm bg-white border border-light">
-                <div class="mb-3"><label class="form-label fw-bold">Your Name</label><input type="text" class="form-control" required id="f-name"></div>
-                <div class="mb-3"><label class="form-label fw-bold">Email Address</label><input type="email" class="form-control" required id="f-email"></div>
-                <div class="mb-3"><label class="form-label fw-bold">Message Text</label><textarea class="form-control" rows="4" required id="f-msg"></textarea></div>
-                <button type="submit" class="btn-purple w-100">Send Inquiry</button>
-            </form>
-        </section>
-
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-amber-400 text-amber-950 text-center py-2 px-4 text-sm font-semibold tracking-wide shadow-sm">
+        🎉 Whimsical Stories That Make Kids Laugh & Think Big! Order Directly on WhatsApp.
     </div>
 
-    <!-- FOOTER LAYOUT -->
-    <footer>
-        <p class="copyright-text mb-0">Copyright &copy; 2026 KiB Tara | Powered by KiB Tara</p>
+    <!-- NAVIGATION HEADER (Astra Inspired) -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-orange-100">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <span class="brand-font text-3xl font-bold tracking-tight text-orange-500">kiB<span class="text-amber-500">tara</span></span>
+            </a>
+            
+            <!-- Right Nav Elements -->
+            <div class="flex items-center space-x-6">
+                <a href="#books-section" class="font-medium text-gray-600 hover:text-orange-500 transition-colors hidden sm:inline-block">Our Books</a>
+                <!-- Cart Trigger Button -->
+                <button onclick="toggleCartModal()" class="relative bg-orange-50 hover:bg-orange-100 text-orange-600 px-4 py-2 rounded-full font-bold transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span class="hidden sm:inline">Cart</span>
+                    <span id="cart-count" class="bg-orange-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center absolute -top-1 -right-1 font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO PROFILE BANNER -->
+    <section class="bg-gradient-to-b from-orange-50 via-amber-50 to-[#fbf9f5] py-16 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Meet the Author</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6 leading-tight">Delightful Tales by <span class="text-orange-500">Mrs. Jegatha Dattani</span></h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                Crafting wonderful, imaginative worlds to make young readers smile, dream, and discover amazing things every single day.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#books-section" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+                    Explore Book Store
+                </a>
+                <a href="https://wa.me" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Chat With Us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE SHEET STATUS / NOTIFICATION (Optional Component) -->
+    <div id="loading-status" class="hidden max-w-6xl mx-auto px-4 mt-4">
+        <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-xl flex items-center space-x-3 text-sm">
+            <i class="fa-solid fa-circle-notch animate-spin text-lg"></i>
+            <span>Fetching the latest collection updates directly from spreadsheet catalog...</span>
+        </div>
+    </div>
+
+    <!-- MAIN PRODUCT SECTION -->
+    <main id="books-section" class="max-w-6xl mx-auto px-4 py-16 scroll-mt-20">
+        <!-- Section Header with Search Toolbar -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Our Magical Book Shelf</h2>
+                <p class="text-gray-600">Select a book to add to your reading basket and order instantly over WhatsApp.</p>
+            </div>
+            <!-- Dynamic Catalog Filter Search -->
+            <div class="relative w-full md:w-80">
+                <i class="fa-solid fa-magnifying-glass text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                <input type="text" id="search-bar" oninput="filterBooks()" placeholder="Search book titles..." class="w-full pl-11 pr-4 py-2.5 bg-white rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm shadow-sm transition-all">
+            </div>
+        </div>
+
+        <!-- PRODUCT GRID MOCK CONTAINER -->
+        <div id="books-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic JavaScript Content Hooks Here -->
+        </div>
+    </main>
+
+    <!-- SHOPPING CART SLIDEOUT OVERLAY DIALOG -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs hidden flex justify-end">
+        <!-- Close overlay box behind content area -->
+        <div class="absolute inset-0" onclick="toggleCartModal()"></div>
+        
+        <!-- Cart panel chassis element -->
+        <div class="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col z-10 animate-slide-left">
+            <!-- Header elements -->
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-orange-50">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping text-orange-500"></i>
+                    <span>Your Reading Basket</span>
+                </h3>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-gray-600 text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- List of line items inside basket window wrapper -->
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <!-- Javascript fills nodes here dynamically -->
+            </div>
+
+            <!-- Total panel billing summary foot area component -->
+            <div class="p-6 border-t border-gray-100 bg-gray-50">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-gray-600 font-medium">Estimated Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-gray-900">₹0</span>
+                </div>
+                
+                <!-- Primary Checkout Activation Action Handler Component -->
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-3 text-lg">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Confirm Order via WhatsApp</span>
+                </button>
+                <p class="text-center text-xs text-gray-500 mt-3">
+                    Clicking opens WhatsApp to share items, delivery details & complete secure payment directly.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER ARCHITECTURE PANEL -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4 border-t-4 border-orange-500">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="brand-font text-2xl font-bold text-white tracking-tight">kiB<span class="text-orange-500">tara</span></span>
+                <p class="text-sm mt-1 text-gray-500">&copy; 2026 kiB tara Books Store. All Rights Reserved.</p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                <span>Curated Content for Kids</span>
+                <span>•</span>
+                <span>Direct Author Channel</span>
+            </div>
+        </div>
     </footer>
 
-    <!-- CENTRAL STATE RE-SYNC APPLICATION LOOP -->
+    <!-- LOGICAL ENGINE SCRIPT BLOCKS -->
     <script>
-        const ACTIVE_WHATSAPP_ID = "918870227915";
-
-        // MASTER SECURE LIVE IMAGERY REGISTER
-        const CATALOG_COLLECTION = [
-            { id: 1, title: "Tamil and English Alphabets", cat: "Activity Books", reg: "150.00", sale: "99.00", img: "https://unsplash.com" },
-            { id: 2, title: "Pip's Brave Wings (English)", cat: "Yellow (Ages 5-6)", reg: "120.00", sale: "99.00", img: "https://unsplash.com" },
-            { id: 3, title: "பிப்பின் வீர சிறகுகள் (Tamil)", cat: "Yellow (Ages 5-6)", reg: "120.00", sale: "99.00", img: "https://unsplash.com" },
+        // CONFIGURATION DATA STRINGS
+        const WHATSAPP_PHONE = "918870227915"; // Targeted customer workspace interface number
+        
+        // SAMPLE BOOK INVENTORY DATABASE OBJECT ARRAYS (Fallback catalog list array configuration schemas)
+        const LOCAL_BOOKS_DATABASE = [
+            {
+                id: 1,
+                title: "The Laughing Dolphin",
+                price: 299,
+                description: "A funny and engaging ocean adventure tale that teaches children the profound value of spreading pure joy and sharing smiles.",
+                image: "https://unsplash.com"
+            },
+            {
+                id: 2,
+                title: "Thinking Big Under the Stars",
+                price: 349,
